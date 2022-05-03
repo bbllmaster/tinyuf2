@@ -73,7 +73,7 @@ jobs:
       run: git submodule update --init lib/tinyusb lib/uf2
 
     - name: Build
-      run: docker run --rm -v $PWD:/project -w /project espressif/idf:release-v4.4 make VERBOSE=1 -C ports/espressif/ BOARD=${{ matrix.board }} all self-update copy-artifact
+      run: docker run --rm -v $PWD:/project -w /project espressif/idf:release-v4.4 make DEBUG=1 -C ports/espressif/ BOARD=${{ matrix.board }} all self-update copy-artifact
 
     - uses: actions/upload-artifact@v2
       with:
